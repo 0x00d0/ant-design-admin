@@ -13,6 +13,10 @@ Vue.use(antDesignVue)
 
 Vue.config.productionTip = false
 
+if(process.env.NODE_ENV === 'mock'){
+  require('@/mock/login');
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
