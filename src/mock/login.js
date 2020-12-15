@@ -1,6 +1,6 @@
 const Mock = require('mockjs');
 
-import USER_LOGIN from './user.login.json'
+import userLogin from './user.login.json'
 
 
-Mock.mock("/login",'post', USER_LOGIN)
+Mock.mock("/api/login",'post', userLogin)

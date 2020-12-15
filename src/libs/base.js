@@ -1,29 +1,23 @@
 let Axios;
 
-if(process.env.NODE_ENV === "MOCK"){
+if(process.env.NODE_ENV === 'mock'){
   Axios = require('axios');
-  Axios.default.headers.post['Context-type'] = 'application/x-www-form-urlencoded'
+  Axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded'
 }
 
-export function fetch(url,params={}){
-  if(process.env.NODE_ENV === "MOCK"){
-    return new Promise(resolve => {
-      Axios.post(url,params).then(
-        response=>{
+export function fetch(url,params = {}){
+  if(process.env.NODE_ENV === 'mock'){
+    return new Promise((resolve,reject) => {
+      Axios.post(url,params)
+        .then(response=>{
           resolve(response.data);
-        }).catch((error)=>{
+        })
+        .catch((error) => {
           reject(error);
-      })
+        })
     })
-  }else{
 
+  } else{
+    console.log('非mock');
   }
 }
-
-
-
-
-
-
-
-
