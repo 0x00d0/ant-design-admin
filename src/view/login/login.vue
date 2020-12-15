@@ -59,16 +59,7 @@
         </a-form-item>
 
         <div class="user-login-other">
-          <span>其他登陆方式</span>
-          <a>
-            <a-icon class="item-icon" type="ailpay-cirle"></a-icon>
-          </a>
-          <a>
-            <a-icon class="item-icon" type="taobo-cirle"></a-icon>
-          </a>
-          <a>
-            <a-icon class="item-icon" type="weibo-cirle"></a-icon>
-          </a>
+          <span>其他登陆方式</span
         </div>
       </a-form>
     </div>
