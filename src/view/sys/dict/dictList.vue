@@ -35,6 +35,7 @@
 </template>
 <script>
 import addDict from './addDict';
+import { delDict, updateDict, getListDict} from '../../../api/sys/dict/dict'
 
 export default {
   name: 'dictList',
