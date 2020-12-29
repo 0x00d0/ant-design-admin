@@ -1,33 +1,34 @@
+import {getBreadCrumbList, getHomeRoute} from '../../libs/utils';
+import router from '../../router/router'
+
 export default {
   state: {
-    Lang: localStorage.getItem("lang")?localStorage.getItem("lang"):'zh_CN'
+    userLang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'zh-CN',
+    breadCrumbList: localStorage.getItem('breadCrumbList') ? JSON.parse(localStorage.getItem('breadCrumbList')) : [],
+    homeRoute: getHomeRoute(router)
   },
   getters: {
-    Lang(state, getters,rootState){
-      return rootState.app.Lang;
+    userLang(state, getters, rootState) {
+      return rootState.app.userLang;
+    },
+    breadCrumbList(state, getters, rootState){
+      return rootState.app.breadCrumbList;
     }
   },
   mutations: {
-    setLang(state, Lang){
-      state.Lang = Lang;
-      localStorage.setItem('lang', Lang);
+    setUserLang(state, userLang) {
+      state.userLang = userLang;
+      localStorage.setItem('lang', userLang);
+    },
+    setBreadCrumbList(state, routeMetched) {
+      let breadCrumbList = getBreadCrumbList(routeMetched,state.homeRoute);
+      state.breadCrumbList = breadCrumbList;
+      localStorage.setItem('breadCrumbList',JSON.stringify(breadCrumbList));
     }
   },
   actions: {
-    setLanguage({commit}, {Lang}){
-      commit('setLang', Lang);
+    setUserLanguage({commit}, {userLang}) {
+      commit('setUserLang', userLang);
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
